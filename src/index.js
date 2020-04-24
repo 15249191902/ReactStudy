@@ -4,10 +4,9 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 // import Login from './component/Login'
 // import Case from './component/Case'
-import List from './component/List'
-let arr = [1,2,3]
+import Children from './component/Children'
 ReactDOM.render(
-  <List numbers={arr}></List>,
+  <Children></Children>,
   document.getElementById('root')
 );
 // If you want your app to work offline and load faster, you can change
