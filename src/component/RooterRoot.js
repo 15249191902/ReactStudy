@@ -11,9 +11,9 @@ class RouterRoot extends  React.Component {
     render () {
         return (
             <Router>
-                <Link to="/">Home</Link>
+                {/* <Link to="/">Home</Link>
                 <Link to="/about">About</Link>
-                <Link to="/topics">Topics</Link>
+                <Link to="/topics">Topics</Link> */}
                 <Switch>
                     <Route path="/about">
                         <About></About>
