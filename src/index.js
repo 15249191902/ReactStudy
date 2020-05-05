@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-// import Login from './component/Login'
+// import Login from './component/Login
 // import Case from './component/Case'
-import Children from './component/Children'
+// import Children from './component/Children'
+import Router from "./router/index"
 ReactDOM.render(
-  <Children></Children>,
+  <Router></Router>,
   document.getElementById('root')
 );
 // If you want your app to work offline and load faster, you can change
