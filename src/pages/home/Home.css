@@ -1,4 +1,26 @@
 @import '~antd/dist/antd.css';
+.contain {
+  display: flex;
+  height: 800px;
+  justify-content: center;
+  align-items: center;
+  /* background: lightgoldenrodyellow; */
+}
+.content {
+  width:1000px;
+  height:600px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  /* background: lightblue; */
+}
+.headerItem {
+  height:60px;
+  line-height:60px;
+  text-align: center;
+  border: 1px solid #fff;
+  background:#24609F;
+  color:#fff;
+}
 .red {
     color: red;
 }

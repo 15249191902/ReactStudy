@@ -3,7 +3,6 @@ import {
     BrowserRouter,
     Switch,
     Route,
-    NavLink,
 } from 'react-router-dom'
 import Home from "../pages/home/Home.js"
 import Message from "../pages/Message.js"
@@ -12,8 +11,8 @@ export default function Router() {
     return (
         <div>
             <BrowserRouter>
-                <NavLink to="Message" activeClassName="hurray">Message</NavLink>
-                <NavLink to="Detail" activeClassName="hurray">Detail</NavLink>
+                {/* <NavLink to="Message" activeClassName="hurray">Message</NavLink>
+                <NavLink to="Detail" activeClassName="hurray">Detail</NavLink> */}
                 <Switch>
                     <Route path="/Message">
                         <Message />
