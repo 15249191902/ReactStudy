@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { useHistory } from 'react-router-dom'
 import { 
   Button,
@@ -14,6 +14,10 @@ function Home () {
       history.push("/Detail");
     }
 
+    useEffect(() => {
+      console.log("useEffect方法执行！");
+    },[])
+    
     const dataSource = [
       {
         key: '1',
