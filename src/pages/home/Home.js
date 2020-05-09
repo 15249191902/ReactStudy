@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react'
 import { useHistory } from 'react-router-dom'
+import {getUserData} from "api/userApi/user.js"
 import { 
   Button,
   Row,
@@ -15,7 +16,9 @@ function Home () {
     }
 
     useEffect(() => {
-      console.log("useEffect方法执行！");
+      getUserData().then(res => {
+        console.log(res);
+      })
     },[])
     
     const dataSource = [
@@ -23,13 +26,11 @@ function Home () {
         key: '1',
         name: '智能计划',
         age: 32,
-        address: '西湖区湖底公园1号',
       },
       {
         key: '2',
         name: '精细化',
         age: 42,
-        address: '西湖区湖底公园1号',
       },
     ];
     const columns = [
@@ -42,11 +43,6 @@ function Home () {
         title: '数量',
         dataIndex: 'age',
         key: 'age',
-      },
-      {
-        title: '住址',
-        dataIndex: 'address',
-        key: 'address',
       },
     ];
     return (
