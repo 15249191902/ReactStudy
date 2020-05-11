@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { useHistory } from 'react-router-dom'
 import {
   getUserByPage, 
+  getUserData1,
 } from "api/userApi/user.js"
 import { 
   Button,
@@ -31,7 +32,8 @@ function Home () {
       history.push("/Detail");
     }
     function initData () {
-      getUserByPage({pageNo:1, pageSize:10}).then(res => {
+        getUserData1({pageNo:1, pageSize:10}).then(res => {
+          console.log(res)
         let arr = res.data.map(item => {
           return {
             key: item.id,
