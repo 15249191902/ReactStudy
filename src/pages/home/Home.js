@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react'
 import { useHistory } from 'react-router-dom'
 import {
-  getUserByPage, 
-  getUserData1,
+  getUserByPage,
+  deleteUserByIdApi
+  // getUserData1,
 } from "api/userApi/user.js"
 import { 
   Button,
@@ -26,14 +27,31 @@ function Home () {
         dataIndex: 'age',
         key: 'age',
       },
+      {
+        title: '操作',
+        key: "operate",
+        render : function (item, record) {
+          return (
+            <Button type="primary" onClick={(e) => deleteBtn(record.key, e)}>删除</Button>
+          )
+        }
+      }
     ];
     let history = useHistory();
     function handleClick() {
       history.push("/Detail");
     }
+    // 删除一条
+    function deleteBtn (id, e){
+      deleteUserByIdApi({id: id}).then(res => {
+        const rData = res.data;
+        if (rData.code === 1) {
+          initData();
+        }
+      })
+    }
     function initData () {
-        getUserData1({pageNo:1, pageSize:10}).then(res => {
-          console.log(res)
+      getUserByPage({pageNo:1, pageSize:10}).then(res => {
         let arr = res.data.map(item => {
           return {
             key: item.id,

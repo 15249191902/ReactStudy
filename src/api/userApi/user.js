@@ -6,6 +6,13 @@ export const getUserByPage = data => {
     data
   })
 }
+export const deleteUserByIdApi = data => {
+  return commonRequest({
+    method: 'post',
+    url: '/users/deleteUserById',
+    data
+  })
+}
 export const getUserData1 = data => {
   return commonRequest({
     method: 'post',
