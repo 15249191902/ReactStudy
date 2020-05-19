@@ -44,7 +44,7 @@ function Home () {
     // 删除一条
     function deleteBtn (id, e){
       deleteUserByIdApi({id: id}).then(res => {
-        const rData = res.data;
+        const rData = res.data.data;
         if (rData.code === 1) {
           initData();
         }
@@ -52,7 +52,8 @@ function Home () {
     }
     function initData () {
       getUserByPage({pageNo:1, pageSize:10}).then(res => {
-        let arr = res.data.map(item => {
+        let rData = res.data
+        let arr = rData.data.map(item => {
           return {
             key: item.id,
             name: item.name,
