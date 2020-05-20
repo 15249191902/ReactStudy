@@ -44,8 +44,8 @@ function Home () {
     // 删除一条
     function deleteBtn (id, e){
       deleteUserByIdApi({id: id}).then(res => {
-        const rData = res.data.data;
-        if (rData.code === 1) {
+        let rData = res.data;
+        if (rData.status === 0) {
           initData();
         }
       })
@@ -53,14 +53,16 @@ function Home () {
     function initData () {
       getUserByPage({pageNo:1, pageSize:10}).then(res => {
         let rData = res.data
-        let arr = rData.data.map(item => {
-          return {
-            key: item.id,
-            name: item.name,
-            age: item.age
-          }
-        });
-        setDateSource(arr);
+        if (rData.status === 0) {
+          let arr = rData.data.user.map(item => {
+            return {
+              key: item.id,
+              name: item.name,
+              age: item.age
+            }
+          });
+          setDateSource(arr);
+        }
       })
     }
     useEffect(() => {
