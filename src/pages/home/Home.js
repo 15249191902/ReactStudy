@@ -10,12 +10,32 @@ import {
   Row,
   Col,
   Table,
+  Upload,
+  message,
 } from 'antd'
 import homeCss from "./Home.module.scss"
-
+import {UploadOutlined} from '@ant-design/icons'
+import "./Home.css"
 function Home () {
     // table数据
     const [dataSource, setDateSource] = useState([])
+    const props = {
+      name: 'file',
+      action: '/upload/fileUpload',
+      headers: {
+        authorization: 'authorization-text',
+      },
+      onChange(info) {
+        if (info.file.status !== 'uploading') {
+          console.log(info.file, info.fileList);
+        }
+        if (info.file.status === 'done') {
+          message.success(`${info.file.name} file uploaded successfully`);
+        } else if (info.file.status === 'error') {
+          message.error(`${info.file.name} file upload failed.`);
+        }
+      },
+    };
     // 表头
     const columns = [
       {
@@ -108,6 +128,11 @@ function Home () {
             </header>
             <Table dataSource={dataSource} columns={columns} />
             <Button type="primary">button</Button>
+            <Upload {...props}>
+              <Button>
+                <UploadOutlined /> Click to Upload
+              </Button>
+            </Upload>
           </div>
         </div>
     )
