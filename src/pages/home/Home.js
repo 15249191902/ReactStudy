@@ -11,7 +11,7 @@ import {
   Col,
   Table,
 } from 'antd'
-import homeCss from "./Home.module.css"
+import homeCss from "./Home.module.scss"
 
 function Home () {
     // table数据
