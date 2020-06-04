@@ -11,7 +11,8 @@ import {
   Col,
   Table,
 } from 'antd'
-import "./Home.css"
+import homeCss from "./Home.module.css"
+
 function Home () {
     // table数据
     const [dataSource, setDateSource] = useState([])
@@ -68,6 +69,7 @@ function Home () {
     useEffect(() => {
       // 初始化数据
       initData();
+      console.log(require.resolve('style-loader'))
       // let rq1 = getUserData({pageNo: 1, pageSize: 10}).then(res => {
       //   // console.log(res);
       //   // console.log(res)
@@ -83,23 +85,24 @@ function Home () {
       // })
     },[])
     return (
-        <div className="contain">
-          <div className="content">
+        <div className={homeCss.contain}>
+        {/* <div className="contain"> */}
+          <div className={homeCss.content}>
             <header>
               <Row>
                 <Col className="gutter-row" span={6}>
-                  <div className="headerItem" onClick={() => {
+                  <div className={homeCss.headerItem} onClick={() => {
                     history.push("/Home")
                   }}>首页</div>
                 </Col>
                 <Col className="gutter-row" span={6}>
-                  <div className="headerItem" onClick={handleClick}>组织详情</div>
+                  <div className={homeCss.headerItem} onClick={handleClick}>组织详情</div>
                 </Col>
                 <Col className="gutter-row" span={6}>
-                  <div className="headerItem" >质量分析</div>
+                  <div className={homeCss.headerItem} >质量分析</div>
                 </Col>
                 <Col className="gutter-row" span={6}>
-                  <div className="headerItem">标准设备管理</div>
+                  <div className={homeCss.headerItem}>标准设备管理</div>
                 </Col>
               </Row>
             </header>
