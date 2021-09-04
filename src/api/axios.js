@@ -1,5 +1,5 @@
 import axios from 'axios'
-export const commonRequest = (option = {}) => {
+export default  (option = {}) => {
   // 创建一个实例
   const instance = axios.create();
   // 请求拦截器

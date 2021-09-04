@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react'
 import { useHistory } from 'react-router-dom'
 import {
-  getUserByPage,
-  deleteUserByIdApi
+  // getUserByPage,
+  deleteUserByIdApi,
+  getDeptList,
   // getUserData1,
 } from "api/userApi/user.js"
 import { 
@@ -14,8 +15,7 @@ import {
   message,
 } from 'antd'
 import homeCss from "./Home.module.scss"
-import {UploadOutlined} from '@ant-design/icons'
-import "./Home.css"
+import { UploadOutlined } from '@ant-design/icons'
 function Home () {
     // table数据
     const [dataSource, setDateSource] = useState([])
@@ -40,14 +40,13 @@ function Home () {
     const columns = [
       {
         title: '项目名称',
-        dataIndex: 'name',
-        key: 'name',
+        dataIndex: 'dname',
       },
-      {
-        title: '数量',
-        dataIndex: 'age',
-        key: 'age',
-      },
+      // {
+      //   title: '数量',
+      //   dataIndex: 'age',
+      //   key: 'age',
+      // },
       {
         title: '操作',
         key: "operate",
@@ -72,16 +71,16 @@ function Home () {
       })
     }
     function initData () {
-      getUserByPage({pageNo:1, pageSize:10}).then(res => {
+      getDeptList({pageNo:1, pageSize:10}).then(res => {
+        console.log(res)
         let rData = res.data
-        if (rData.status === 0) {
-          let arr = rData.data.user.map(item => {
-            return {
-              key: item.id,
-              name: item.name,
-              age: item.age
-            }
-          });
+        if (res.status === 200) {
+          console.log(rData)
+          let arr = rData.map(item => {
+            item.key = item.deptno
+            return item;
+          })
+          console.log(arr)
           setDateSource(arr);
         }
       })
@@ -89,7 +88,6 @@ function Home () {
     useEffect(() => {
       // 初始化数据
       initData();
-      console.log(require.resolve('style-loader'))
       // let rq1 = getUserData({pageNo: 1, pageSize: 10}).then(res => {
       //   // console.log(res);
       //   // console.log(res)
@@ -109,6 +107,7 @@ function Home () {
         {/* <div className="contain"> */}
           <div className={homeCss.content}>
             <header>
+              <h1>学霸在家里学习的时候会告诉你吗？</h1>
               <Row>
                 <Col className="gutter-row" span={6}>
                   <div className={homeCss.headerItem} onClick={() => {

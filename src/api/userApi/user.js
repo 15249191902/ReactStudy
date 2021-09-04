@@ -1,4 +1,4 @@
-import {commonRequest} from '../axios.js'
+import commonRequest from '../axios.js'
 export const getUserByPage = data => {
   return commonRequest({
     method: 'post',
@@ -18,5 +18,11 @@ export const getUserData1 = data => {
     method: 'post',
     url: "/users/getUser1",
     data
+  })
+}
+export const getDeptList = data => {
+  return commonRequest({
+    method: 'get',
+    url: "/getDeptList",
   })
 }
