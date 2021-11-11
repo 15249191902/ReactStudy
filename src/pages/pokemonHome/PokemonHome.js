@@ -1,4 +1,5 @@
 import React, { useEffect, useState, Fragment } from "react"
+import {Link, Route} from "react-router-dom"
 import { 
   getTypeApi, 
   addType, 
@@ -25,12 +26,10 @@ const PokemonHome = () => {
   const [typeList, setTypeList] = useState([]);
   const [pokemonList, setPokemonList] = useState([]);
   // initData()
-  console.log("组件函数执行了")
   useEffect (()=> {
     initData()
   }, [])
   function initData(){
-    console.log("init函数触发了")
     // 获得属性列表
     getTypeApi().then(res => {
       console.log(res)
@@ -43,7 +42,6 @@ const PokemonHome = () => {
   function getPokemonList (data = {}) {
     getPokemonListApi(data).then(res => {
       const rData = res.data
-      console.log(rData)
       setPokemonList(rData)
     })
   }
@@ -57,6 +55,7 @@ const PokemonHome = () => {
     setTypeId(e.target.value)
   }
   function submitFn (){
+    console.log(this)
     addType({
       property,
       color
@@ -96,7 +95,6 @@ const PokemonHome = () => {
     })
   }
   function onFinish (values) {
-    console.log(values)
     let {pokemonName, property, id} = values
     getPokemonList({
       id,
@@ -107,11 +105,12 @@ const PokemonHome = () => {
     });
   }
   function onFinishFailed (values) {
-    console.log(values)
   }
   return (
     <Fragment>
       <h2>Pokemon Home</h2>
+      <Link to="/Detail">Detail</Link>
+      <Link to="/Pokemon">Pokemon</Link>
       <Divider orientation="left">属性列表</Divider>
       property:
       <Input value={property} defaultValue="" onChange={changeFn} />
